@@ -16,6 +16,7 @@ def browser(request):
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         options.add_experimental_option('prefs', {'intl.accept_languages': language})
+        options.add_argument("--start-maximized")  # Максимизируем окно браузера
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         print(f"\nstart {browser_name.upper()} browser with {language.upper()} language for test..")
