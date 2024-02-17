@@ -7,6 +7,7 @@ def pytest_addoption(parser):
     parser.addoption('--language', action='store', default='en',
                      help="Choose language: ru, en, etc.")
 
+
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
@@ -16,7 +17,8 @@ def browser(request):
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         options.add_experimental_option('prefs', {'intl.accept_languages': language})
-        options.add_argument("--start-maximized")  # Максимизируем окно браузера
+        # options.add_argument("--start-maximized") # Максимизируем окно браузера
+        # options.add_argument('--headless') # Без интерфейса
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         print(f"\nstart {browser_name.upper()} browser with {language.upper()} language for test..")
